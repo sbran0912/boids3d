@@ -1,0 +1,8 @@
+# Build-Artefakte
+/demo
+/lib3d_group
+*.app
+
+# Editor / OS
+.DS_Store
+*.swp
