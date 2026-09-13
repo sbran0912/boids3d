@@ -136,7 +136,7 @@ func (r *Renderer) Polygon(pts []float32, style DrawStyle) {
 // DrawSolid zeichnet die expandierten Kanten/Flächen eines Solids mit der
 // übergebenen View-/Welt-Matrix. Solid bleibt damit reine Daten – das
 // Zeichnen liegt bewusst beim Renderer statt in einem Solid.Draw, das auf
-// den globalen DefaultRenderer zugegriffen hat.
+// einen globalen Renderer zugegriffen hat.
 func (r *Renderer) DrawSolid(s *Solid, view, world *Mat4x4) {
 	vw := view.Mult(world)
 	r.SetModelview(&vw)

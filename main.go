@@ -9,13 +9,14 @@ import (
 func main() {
 	runtime.LockOSThread()
 
-	if !lib3d.DefaultRenderer.Init(1600, 1000) {
+	r := &lib3d.Renderer{}
+	if !r.Init(1600, 1000) {
 		return
 	}
 	camPos := lib3d.NewVec3(50, 20, 200)
 	target := lib3d.NewVec3(0, 0, 0)
 	up := lib3d.NewVec3(0, 1, 0)
-	lib3d.DefaultRenderer.SetFog(100.0, 400.0, 0.25, 0.25, 0.25, 1.0)
+	r.SetFog(100.0, 400.0, 0.25, 0.25, 0.25, 1.0)
 
 	gridMesh := lib3d.SolidGrid(600, 24)
 	grid := lib3d.NewBody(gridMesh, 0, 0, 0, lib3d.BodyConfig{Color: "#777774", LineWidth: 1.0})
@@ -42,28 +43,28 @@ func main() {
 	/*---------------------------------
 	Render-Schleife (in der Library)
 	---------------------------------*/
-	lib3d.DefaultRenderer.StartAnimation(func() {
-		lib3d.DefaultRenderer.Background(40, 40, 40)
+	r.StartAnimation(func() {
+		r.Background(40, 40, 40)
 
 		view := lib3d.Mat4x4Lookat(camPos, target, up)
-		proj := lib3d.Mat4x4Perspective(1.2, lib3d.DefaultRenderer.Aspect(), 0.1, 1000.0)
-		lib3d.DefaultRenderer.SetProjection(&proj)
+		proj := lib3d.Mat4x4Perspective(1.2, r.Aspect(), 0.1, 1000.0)
+		r.SetProjection(&proj)
 
 		sunDir := lib3d.NewVec3(0.5, 1.0, 0.3)
 		camLight := sunDir.TransformDir(&view)
-		lib3d.DefaultRenderer.SetLightDirection(camLight.X, camLight.Y, camLight.Z)
+		r.SetLightDirection(camLight.X, camLight.Y, camLight.Z)
 
-		lib3d.DefaultRenderer.DrawBody(&grid, &view)
+		r.DrawBody(&grid, &view)
 
 		// Hindernisse animieren und zeichnen.
-		now := lib3d.DefaultRenderer.Time()
+		now := r.Time()
 		for _, o := range obstacles {
 			o.Update(now)
-			lib3d.DefaultRenderer.DrawBody(o.Body, &view)
+			r.DrawBody(o.Body, &view)
 		}
 
 		for _, v := range vehics {
-			if lib3d.DefaultRenderer.IsMouseDown() {
+			if r.IsMouseDown() {
 				v.Seek(lib3d.NewVec3(0, 0, 0))
 			}
 			v.Allign(vehics)
@@ -73,7 +74,7 @@ func main() {
 			v.AvoidObstacles(obstacles, obstacleMargin)
 			v.AlignToVelocity()
 			v.Update()
-			lib3d.DefaultRenderer.DrawBody(&v.Body, &view)
+			r.DrawBody(&v.Body, &view)
 		}
 	})
 }

@@ -69,8 +69,6 @@ type Renderer struct {
 	gradRadius  float32
 }
 
-var DefaultRenderer = &Renderer{}
-
 func (r *Renderer) cursorCallback(w *glfw.Window, xpos, ypos float64) {
 	r.mouseX = float32(xpos) - r.screenW/2
 	r.mouseY = -(float32(ypos) - r.screenH/2)
