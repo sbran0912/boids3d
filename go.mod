@@ -1,4 +1,4 @@
-module lib3d_group
+module boids3d
 
 go 1.26.2
 

@@ -3,7 +3,7 @@ package main
 import (
 	"runtime"
 
-	"lib3d_group/lib3d"
+	"boids3d/lib3d"
 )
 
 func main() {

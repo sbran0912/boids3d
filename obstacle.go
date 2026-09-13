@@ -3,7 +3,7 @@ package main
 import (
 	"math"
 
-	"lib3d_group/lib3d"
+	"boids3d/lib3d"
 )
 
 // FloatingBox ist ein schwebendes Hindernis für die Boids: ein Body mit

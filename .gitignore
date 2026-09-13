@@ -1,6 +1,6 @@
 # Build-Artefakte
 /demo
-/lib3d_group
+/boids3d
 *.app
 
 # Editor / OS

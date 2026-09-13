@@ -1,4 +1,4 @@
-# lib3d_group – Makefile
+# boids3d – Makefile
 
 BINARY := demo
 

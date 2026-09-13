@@ -3,7 +3,7 @@ package main
 import (
 	"math"
 
-	"lib3d_group/lib3d"
+	"boids3d/lib3d"
 )
 
 // Vehicle ist ein autonomes Fahrzeug der Simulation.
