@@ -101,16 +101,6 @@ func (b *Body) GetFacePlanes() []Plane {
 	return planes
 }
 
-func (b *Body) Draw(view *Mat4x4) {
-	world := b.modelMatrix()
-
-	DefaultRenderer.SetStrokeWidth(b.LineWidth)
-	DefaultRenderer.SetStrokeColorHex(b.Color)
-	DefaultRenderer.SetFillColorHex(b.Color) // Füllfarbe für die Flächen
-
-	b.Solid.Draw(view, &world)
-}
-
 func (a *Body) Distance(b *Body) float32 {
 	return a.Pos.Distance(b.Pos)
 }
