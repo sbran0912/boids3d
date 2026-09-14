@@ -244,6 +244,6 @@ func (v *Vehicle) AvoidObstacles(obstacles []*FloatingBox, margin float32) {
 		if into := v.Body.Vel.Dot(normal); into < 0 {
 			v.Body.Vel = v.Body.Vel.Sub(normal.Scale(into))
 		}
-		v.ApplyForce(normal.Scale(0.1))
+		v.ApplyForce(normal.Scale(0.01))
 	}
 }

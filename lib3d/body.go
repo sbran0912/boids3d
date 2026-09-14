@@ -66,7 +66,7 @@ func (b *Body) modelMatrix() Mat4x4 {
 	if b.RotX == 0 && b.RotY == 0 && b.RotZ == 0 {
 		return t
 	}
-	rot := mat4x4Rotate(b.RotX, b.RotY, b.RotZ)
+	rot := Mat4x4Rotate(b.RotX, b.RotY, b.RotZ)
 	return t.Mult(&rot)
 }
 

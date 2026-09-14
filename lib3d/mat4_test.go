@@ -50,7 +50,7 @@ func TestMat4x4Lookat(t *testing.T) {
 	cam := NewVec3(0, 0, 5)
 	target := NewVec3(0, 0, 0)
 	up := NewVec3(0, 1, 0)
-	view := Mat4x4Lookat(cam, target, up)
+	view := Mat4x4LookAt(cam, target, up)
 
 	// Die Kamera selbst liegt im Ursprung des Kameraraums.
 	if got := cam.Transform(&view); got.Length() > testEps {

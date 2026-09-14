@@ -24,7 +24,7 @@ func mat4x4Translate(dx, dy, dz float32) Mat4x4 {
 	}}
 }
 
-func mat4x4Rotate(ax, ay, az float32) Mat4x4 {
+func Mat4x4Rotate(ax, ay, az float32) Mat4x4 {
 	rx := Mat4x4{[16]float32{
 		1, 0, 0, 0,
 		0, float32(math.Cos(float64(ax))), float32(math.Sin(float64(ax))), 0,
@@ -62,7 +62,7 @@ func (a *Mat4x4) Mult(b *Mat4x4) Mat4x4 {
 	return r
 }
 
-func Mat4x4Lookat(cameraPos, target, up Vec3) Mat4x4 {
+func Mat4x4LookAt(cameraPos, target, up Vec3) Mat4x4 {
 	forward := target.Sub(cameraPos).Normalize()
 	right := forward.Cross(up).Normalize()
 	realUp := right.Cross(forward)
